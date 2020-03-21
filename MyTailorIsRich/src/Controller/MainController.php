@@ -17,19 +17,19 @@ class MainController extends AbstractController
        return $this->render('main/index.html.twig');
    }
 
-    /**
-     * @Route("/income", name="main_income")
-     */
-    public function income(IncomeRepository $incomeRepository)
-    {
-        return $this->json($incomeRepository->findAll());
-    }
-        /**
-     * @Route("/output", name="main_output")
-     */
-    public function output(OutputRepository $outputRepository)
-    {
-        return $this->json($outputRepository->findAll());
-    }
+    // /**
+    //  * @Route("/income", name="main_income")
+    //  */
+    // public function income(IncomeRepository $incomeRepository)
+    // {
+    //     return $this->json($incomeRepository->findAll());
+    // }
+    //     /**
+    //  * @Route("/output", name="main_output")
+    //  */
+    // public function output(OutputRepository $outputRepository)
+    // {
+    //     return $this->json($outputRepository->findAll());
+    // }
 
 }

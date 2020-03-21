@@ -23,7 +23,7 @@ class OutputController extends AbstractController
         return $this->json($outputRepository->findAll());
     }
     /**
-     * @Route("/{id}", name="output_show", methods={"GET"})
+     * @Route("/{id}", name="output_show", methods={"GET"}, requirements={"id" : "\d+"})
      */
     public function show(Output $output): Response
     {
@@ -75,7 +75,7 @@ class OutputController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="output_delete", methods={"DELETE"})
+     * @Route("/{id}", name="output_delete", methods={"DELETE"}, requirements={"id" : "\d+"})
      */
     public function delete(Request $request, Output $output): Response
     {

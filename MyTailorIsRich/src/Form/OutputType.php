@@ -14,9 +14,6 @@ class OutputType extends AbstractType
         $builder
             ->add('name')
             ->add('amount')
-            ->add('status')
-            ->add('createdAt')
-            ->add('updatedAt')
         ;
     }
 

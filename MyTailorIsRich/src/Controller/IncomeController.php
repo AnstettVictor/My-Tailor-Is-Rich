@@ -23,7 +23,7 @@ class IncomeController extends AbstractController
         return $this->json($incomeRepository->findAll());
     }
     /**
-     * @Route("/{id}", name="income_show", methods={"GET"})
+     * @Route("/{id}", name="income_show", methods={"GET"}, requirements={"id" : "\d+"})
      */
     public function show(Income $income): Response
     {
@@ -73,7 +73,7 @@ class IncomeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="income_delete", methods={"DELETE"})
+     * @Route("/{id}", name="income_delete", methods={"DELETE"}, requirements={"id" : "\d+"})
      */
     public function delete(Request $request, Income $income): Response
     {

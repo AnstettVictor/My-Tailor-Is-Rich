@@ -3,11 +3,22 @@
 {% block title %}{% endblock %}
 
 {% block body %}
-<h1>My tailor is rich - API</h1>
+	<h1>My tailor is rich - API</h1>
 
-<h2>Accessible en methode GET</h2>
-<ul>
-<li>Lister les income : <a href="{{path('income_index') }}">Listing des incomes en Json</a></li>
-<li>Lister les output : <a href="{{path('output_index') }}">Listing des output en Json</a></li>
-</ul>
+	<h2>Accessible en methode GET</h2>
+	<ul>
+		<li>Lister les income :
+			<a href="{{path('income_index') }}">Listing des incomes en Json</a>
+		</li>
+        		<li>Lister Une income (exemple: id 2):
+			<a href="{{path('income_show', {id: '2'}) }}">Listing des incomes en Json</a>
+		</li>
+
+		<li>Lister les output :
+			<a href="{{path('output_index') }}">Listing des output en Json</a>
+		</li>
+              		<li>Lister Une output (exemple: id 2):
+			<a href="{{path('output_show', {id: '2'}) }}">Listing des output en Json</a>
+		</li>
+	</ul>
 {% endblock %}

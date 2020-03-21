@@ -20,9 +20,14 @@ class IncomeController extends AbstractController
      */
     public function index(IncomeRepository $incomeRepository): Response
     {
-        return $this->render('income/index.html.twig', [
-            'incomes' => $incomeRepository->findAll(),
-        ]);
+        return $this->json($incomeRepository->findAll());
+    }
+    /**
+     * @Route("/{id}", name="income_show", methods={"GET"})
+     */
+    public function show(Income $income): Response
+    {
+        return $this->json($income);
     }
 
     /**
@@ -47,17 +52,6 @@ class IncomeController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
-    /**
-     * @Route("/{id}", name="income_show", methods={"GET"})
-     */
-    public function show(Income $income): Response
-    {
-        return $this->render('income/show.html.twig', [
-            'income' => $income,
-        ]);
-    }
-
     /**
      * @Route("/{id}/edit", name="income_edit", methods={"GET","POST"})
      */
@@ -83,7 +77,7 @@ class IncomeController extends AbstractController
      */
     public function delete(Request $request, Income $income): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$income->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $income->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($income);
             $entityManager->flush();

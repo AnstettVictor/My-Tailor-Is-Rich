@@ -1,0 +1,9 @@
+.app {
+  width: 90%;
+  margin: 1em auto;
+  text-align: center;
+}
+
+.app img {
+  max-width: 150px;
+}

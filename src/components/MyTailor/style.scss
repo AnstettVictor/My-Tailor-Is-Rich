@@ -1,0 +1,20 @@
+@import 'src/styles/vars';
+
+
+.header {
+  display: flex;
+  flex-wrap: nowrap;
+  border: 2px;
+  margin-bottom: 2*$gutter;
+  justify-content: space-between;
+
+}
+.app {
+  width: 90%;
+  margin: 1em auto;
+  text-align: center;
+}
+
+.app img {
+  max-width: 150px;
+}

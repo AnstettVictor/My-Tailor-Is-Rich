@@ -31,26 +31,48 @@ class IncomeController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="income_new", methods={"GET","POST"})
+     * @Route("/new", name="income_new", methods={"GET"})
      */
     public function new(Request $request): Response
     {
         $income = new Income();
-        $form = $this->createForm(IncomeType::class, $income);
+        $form = $this->createForm(IncomeType::class, $income, [
+            'action' => $this->generateUrl('income_new_post'),
+            'method' => 'POST',
+        ]);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($income);
-            $entityManager->flush();
+        // if ($form->isSubmitted() && $form->isValid()) {
+        //     $entityManager = $this->getDoctrine()->getManager();
+        //     $entityManager->persist($income);
+        //     $entityManager->flush();
 
-            return $this->redirectToRoute('income_index');
-        }
+        //     return $this->redirectToRoute('income_index');
+        // }
 
         return $this->render('income/new.html.twig', [
             'income' => $income,
             'form' => $form->createView(),
         ]);
+    }
+       /**
+     * @Route("/new", name="income_new_post", methods={"POST"})
+     */
+    public function newPost(Request $request)
+    {
+        $income = new Income();
+        
+        $data = $request->request->get('income');
+        
+        $income->setName($data['name']);
+        $income->setAmount($data['amount']);
+        $em = $this->getDoctrine()->getManager();
+
+     
+        $em->persist($income);
+        $em->flush();
+        return $this->redirectToRoute('main');
+      
     }
     /**
      * @Route("/{id}/edit", name="income_edit", methods={"GET","POST"})

@@ -20,14 +20,18 @@ class OutputController extends AbstractController
      */
     public function index(OutputRepository $outputRepository): Response
     {
-        return $this->json($outputRepository->findAll());
+        return $this->render('output/index.html.twig' , [
+            'outputs' => $outputRepository->findAll(),
+        ]);
     }
     /**
      * @Route("/{id}", name="output_show", methods={"GET"}, requirements={"id" : "\d+"})
      */
     public function show(Output $output): Response
     {
-        return $this->json($output);
+        return $this->render('output/show.html.twig', [
+            'output' => $output,
+        ]);
     }
     /**
      * @Route("/new", name="output_new", methods={"GET","POST"})

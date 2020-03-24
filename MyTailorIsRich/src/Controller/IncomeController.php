@@ -20,14 +20,18 @@ class IncomeController extends AbstractController
      */
     public function index(IncomeRepository $incomeRepository): Response
     {
-        return $this->json($incomeRepository->findAll());
+        return $this->render('income/index.html.twig', [
+            'incomes' => $incomeRepository->findAll(),
+        ]);
     }
     /**
      * @Route("/{id}", name="income_show", methods={"GET"}, requirements={"id" : "\d+"})
      */
     public function show(Income $income): Response
     {
-        return $this->json($income);
+        return $this->render('income/show.html.twig', [
+            'income' => $income,
+        ]);
     }
 
     /**

@@ -1,9 +1,19 @@
+App\Entity\User:
+    user_{1..5}:
+        name: '<word()>'
+        password: '\$argon2id\$v=19\$m=65536,t=4,p=1\$icQTO200bPENeuMS2VFL/Q\$NdR9NMBVmhbl2atpFitM5UzIxcRcd03/kM+03EegOI8'
+        email: 'tagazou@tagazou.com'
+
 App\Entity\Income: 
     income_{1..20}:
         name: '<word()>'
         amount: '<numberBetween(0, 2500)>'
+        user: '@user_*'
 
 App\Entity\Output:
     output_{1..20}:
         name: '<word()>'
         amount: '<numberBetween(0, 2500)>'
+        user: '@user_*'
+
+

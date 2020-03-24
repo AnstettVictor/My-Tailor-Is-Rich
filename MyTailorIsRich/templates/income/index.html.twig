@@ -4,12 +4,12 @@
 
 {% block body %}
     <h1>Income index</h1>
-
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>User Name</th>
                 <th>Amount</th>
                 <th>Status</th>
                 <th>CreatedAt</th>
@@ -18,10 +18,11 @@
             </tr>
         </thead>
         <tbody>
-        {% for income in incomes %}
+         {% for income in incomes %}
             <tr>
                 <td>{{ income.id }}</td>
                 <td>{{ income.name }}</td>
+                <td>{{ income.user }}</td>
                 <td>{{ income.amount }}</td>
                 <td>{{ income.status ? 'Yes' : 'No' }}</td>
                 <td>{{ income.createdAt ? income.createdAt|date('Y-m-d H:i:s') : '' }}</td>

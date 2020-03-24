@@ -10,6 +10,7 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>User Name</th>
                 <th>Amount</th>
                 <th>Status</th>
                 <th>CreatedAt</th>
@@ -22,6 +23,7 @@
             <tr>
                 <td>{{ output.id }}</td>
                 <td>{{ output.name }}</td>
+                <td>{{ output.user }}</td>
                 <td>{{ output.amount }}</td>
                 <td>{{ output.status ? 'Yes' : 'No' }}</td>
                 <td>{{ output.createdAt ? output.createdAt|date('Y-m-d H:i:s') : '' }}</td>

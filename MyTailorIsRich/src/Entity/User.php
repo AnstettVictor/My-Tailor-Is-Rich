@@ -25,7 +25,8 @@ class User implements UserInterface
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var string The hashed password
+     * @ORM\Column(type="string")
      */
     private $password;
 
@@ -55,9 +56,16 @@ class User implements UserInterface
     private $updatedAt;
 
     /**
+     * @var string Email de l'utilisateur pour s'authentifier
      * @ORM\Column(type="string", length=255)
      */
     private $email;
+
+     /**
+     * @var array Liste des rôles de l'utilisateur
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
 
    
 
@@ -91,9 +99,12 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @see UserInterface
+     */
     public function getPassword(): ?string
     {
-        return $this->password;
+        return (string) $this->password;
     }
 
     public function setPassword(string $password): self
@@ -103,17 +114,40 @@ class User implements UserInterface
         return $this;
     }
 
+    
+    public function getRoles(): array
+    {
+        // $roles = $this->roles;
+        // // guarantee every user at least has ROLE_USER
+         $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+        return $this->roles;
+    }
+     /**
+     * @see UserInterface
+     */
     public function getSalt()
     {
+        // not needed when using the "bcrypt" algorithm in security.yaml
+        return null;
     }
-    public function getRoles()
-    {
-    }
+    /**
+     * @see UserInterface
+     */
     public function eraseCredentials()
     {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
-    public function getUsername()
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
     {
+        return (string) $this->email;
     }
 
     /**
@@ -226,5 +260,14 @@ class User implements UserInterface
         return $this;
     }
 
+    public function setRoles(?string $Roles): self
+    {
+        $this->Roles = $Roles;
+
+        return $this;
+    }
+
   
+
+    
 }

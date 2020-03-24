@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Users index
+{% endblock %}
+
+{% block body %}
+<h1>User index</h1>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Password</th>
+			<th>Income</th>
+			<th>Output</th>
+			<th>Avatar</th>
+			<th>Email</th>
+			<th>Created at</th>
+			<th>Updated at</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for user in users %}
+			<tr>
+				<td>{{ user.id }}</td>
+				<td>{{ user.name }}</td>
+				<td>{{ user.password }}</td>
+				{# On veut afficher le montant total de l'income du user #}
+				<td>{% for income in user.income %}
+			
+						{{dump(income.amount)}}
+
+				{% endfor %}</td>
+				{# On veut afficher le montant total de l'output du user #}
+				<td>10</td>
+				<td><img class="avatar-picture"
+                    src="/uploads/avatar/{{user.avatar|default('Pas d\'avatar ')}}"width="25" height="25"></td>
+					<td>{{ user.email }}</td>
+					
+
+					<td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+					<td>{{ user.updatedAt ? user.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+					<td>
+						<a href="{{ path('user_show', {'id': user.id}) }}">show</a>
+						<a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="7">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('user_new') }}">Create new</a>
+{% endblock %}
+

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Users{% endblock %}
+
+{% block body %}
+    <h1>Edit Users</h1>
+
+    {# {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit" class="btn btn-success">Modifier</button>
+    {{ form_end(form) }} #}
+    {{ include('user/_form.html.twig', {'button_label': 'Update'}) }} 
+
+    <a href="{{ path('main') }}">back to list</a>
+
+     {# {{ include('user/_delete_form.html.twig') }}  #}
+{% endblock %}
+

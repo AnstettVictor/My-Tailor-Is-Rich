@@ -1,0 +1,15 @@
+@import 'src/styles/vars';
+
+
+.ui.compact.menu {
+  
+  border-radius: 42px;
+  background:  rgba(145, 179, 184, 0.507);;
+  box-shadow:  9px 9px 18px #b9c3c9, 
+             -9px -9px 18px #fbffff;
+}
+
+.ui.primary.button {
+
+  background-color: $darkBlue
+}

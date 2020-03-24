@@ -10,9 +10,12 @@
 
 }
 .app {
-  width: 90%;
+  width: 98%;
+  padding: 2em;
   margin: 1em auto;
   text-align: center;
+  height: 95vh;
+  background-color: $lighterColor;
 }
 
 .app img {

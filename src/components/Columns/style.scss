@@ -1,16 +1,57 @@
 @import 'src/styles/vars';
 
 
+
 .ui.segment.title {
  font-size: 1.2em;
- color: #f0f;
- font-weight: bolder;
- 
+ color: $lightColor;
+ font-weight: bolder; 
+ margin-bottom: $gutter;
+ background-color: $darkBlue;
+}
 
+.ui.segments>.ui.segments {
+  margin: 0.6em;
+}
+
+.ui.segments>.segment+.segments:not(.horizontal) {
+  margin-top: 1em; 
+}
+
+.ui.raised.segments {
+
+  border: $darkColor; 
+  
+}
+
+.ui.segments {
+  box-shadow:  9px 9px 18px #b9c3c9, 
+             -9px -9px 18px #fbffff;
 }
 
 .ui.segment.line {
   font-size: 0.8em;
-  color: #f00;
+  color: $lightColor;
   font-weight: bold;
+  background-color: $darkBlue;
+  background-blend-mode: overlay;
+  
+}
+
+.ui.form {
+
+  margin: 1em 0.5em;
+  
+}
+
+.ui.primary.button {
+  margin: 1em 0 0.2em 0 ;
+}
+
+
+
+.ui.button.inputButton  {
+  margin-bottom: 1em;
+  box-shadow:  9px 9px 18px #b9c3c9, 
+             -9px -9px 18px #fbffff;
 }

@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Output index{% endblock %}
+
+{% block body %}
+    <h1>Output index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for output in outputs %}
+            <tr>
+                <td>{{ output.id }}</td>
+                <td>{{ output.name }}</td>
+                <td>{{ output.amount }}</td>
+                <td>{{ output.status ? 'Yes' : 'No' }}</td>
+                <td>{{ output.createdAt ? output.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ output.updatedAt ? output.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('output_show', {'id': output.id}) }}">show</a>
+                    <a href="{{ path('output_edit', {'id': output.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('output_new') }}">Create new</a>
+{% endblock %}

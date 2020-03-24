@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1>My tailor is rich - API</h1>
+
+		<h2>Documentation / Utilisation</h2>
+		<p>Afin de pouvoir utiliser des endpoints</p>
+
+		<h2>Accessible en methode GET</h2>
+		<ul>
+			<li>
+				<pre>/income/</pre>
+				Lister les income :
+				<a href="{{path('income_index') }}">Listing des incomes en Json</a>
+			</li>
+			<li>
+				<pre>/income/{id}</pre>
+				Lister Une income (exemple: id 2):
+				<a href="{{path('income_show', {id: '2'}) }}">Listing des incomes en Json</a>
+			</li>
+			<li>
+				<pre>/output/</pre>
+				Lister les output :
+				<a href="{{path('output_index') }}">Listing des output en Json</a>
+			</li>
+			<li>
+				<pre>/output/{id}</pre>
+				Lister Une output (exemple: id 2):
+				<a href="{{path('output_show', {id: '2'}) }}">Listing des output en Json</a>
+			</li>
+			<li>
+				<pre>/total/income</pre>
+				renvoi un tableau avec en index 1 le montant total et en index 2 le nombre d'actions
+				<a href="{{path('total_income') }}">Total de l'income</a>
+			</li>
+			<li>
+				<pre>/total/output</pre>
+				renvoi un tableau avec en index 1 le montant total et en index 2 le nombre d'actions
+				<a href="{{path('total_output') }}">Total de l'output</a>
+			</li>
+			<li>
+				<pre>/solde</pre>
+				renvoi un tableau Json avec les soldes (entrées /sorties ) ainsi que le total restant
+				<a href="{{path('solde') }}">solde</a>
+			</li>
+		</ul>
+
+		<h2>Accessible en methode GET / POST {la methot GET sera supprimer}</h2>
+		<p>
+			<pre>/income/new</pre>
+			<a href="{{path('income_new')}}">Formulaire d'ajout d'income</a>
+		</p>
+		<p>
+			<pre>/output/new</pre>
+			<a href="{{path('output_new')}}">Formulaire d'ajout d'output</a>
+		</p>
+
+
+		<h2>Accessible en methode GET / POST {la methot GET sera supprimer}</h2>
+		<p>Pour l'exemple entrée N°2</p>
+		<p>
+			<pre>/income/{id}/edit</pre>
+			<a href="{{path('income_edit', {id: '2'})}}">Formulaire d'edition d'income</a>
+		</p>
+		<p>
+			<pre>/output/{id}/edit</pre>
+			<a href="{{path('output_edit', {id: '2'})}}">Formulaire d'edition d'output</a>
+		</p>
+
+		<h2>Accessible en methode DELETE {Accessible en GET actuellemtent}</h2>
+		<p>Pour l'exemple entrée N°2</p>
+		<p>
+			<pre>/income/{id}</pre>
+			<a href="{{path('income_delete', {id: '2'})}}">Suppression</a>
+		</p>
+		<p>
+			<pre>/output/{id}</pre>
+			<a href="{{path('output_delete', {id: '2'})}}">Suppression</a>
+		</p>
+
+	</div>
+
+{% endblock %}

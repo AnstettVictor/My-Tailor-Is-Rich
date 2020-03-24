@@ -42,6 +42,7 @@ class IncomeController extends AbstractController
         ]);
         $form->handleRequest($request);
 
+
         // if ($form->isSubmitted() && $form->isValid()) {
         //     $entityManager = $this->getDoctrine()->getManager();
         //     $entityManager->persist($income);
@@ -63,7 +64,7 @@ class IncomeController extends AbstractController
         $income = new Income();
         
         $data = $request->request->get('income');
-        
+        dd($data);
         $income->setName($data['name']);
         $income->setAmount($data['amount']);
         $em = $this->getDoctrine()->getManager();

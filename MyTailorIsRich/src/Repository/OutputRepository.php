@@ -19,22 +19,19 @@ class OutputRepository extends ServiceEntityRepository
         parent::__construct($registry, Output::class);
     }
 
-    // /**
-    //  * @return Output[] Returns an array of Output objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('o')
-            ->andWhere('o.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('o.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+     /**
+      * @return int Somme de toutes les colonnes amount 
+      */
+    
+      public function total()
+      {
+          return $this->createQueryBuilder('o')
+              ->select('SUM(o.amount)')
+              ->addSelect('count(o.amount)')
+              ->getQuery()
+              ->getSingleResult()
+          ;
+      }
 
     /*
     public function findOneBySomeField($value): ?Output

@@ -19,22 +19,20 @@ class IncomeRepository extends ServiceEntityRepository
         parent::__construct($registry, Income::class);
     }
 
-    // /**
-    //  * @return Income[] Returns an array of Income objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('i.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
+     /**
+      * @return int Somme de toutes les colonnes amount 
+      */
+    
+      public function total()
+      {
+          return $this->createQueryBuilder('i')
+              ->select('SUM(i.amount)')
+              ->addSelect('count(i.amount)')
+              ->getQuery()
+              ->getSingleResult()
+          ;
+      }
+    
 
     /*
     public function findOneBySomeField($value): ?Income

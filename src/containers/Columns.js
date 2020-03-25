@@ -2,21 +2,72 @@ import { connect } from 'react-redux';
 import Columns from '../components/Columns';
 
 // J'ai besoin d'importer l'action creator qui gère le submit
-import { formInputChange, inputSubmit } from '../actions';
+import {
+  incomeTextInputChange,
+  incomeAmountInputChange,
+  expanseTextInputChange,
+  expanseAmountInputChange,
+  extraTextInputChange,
+  extraAmountInputChange,
+  inputSubmit,
+} from '../actions';
 
 
 const mapStateToProps = (state) => ({
-  value: state.messageInput,
+  incomeTextValue: state.incomeTextValue,
+  incomeAmountValue: state.incomeAmountValue,
+  expanseTextValue: state.expanseTextValue,
+  expanseAmountValue: state.expanseAmountValue,
+  extraTextValue: state.extraTextValue,
+  extraAmountValue: state.extraAmountValue,
   appLoading: state.appLoading,
+  incomeList: state.incomeList,
+  fixedExpanseList: state.fixedExpanseList,
+  extraExpanseList: state.extraExpanseList,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onInputChange: (textSaisi) => {
+  onIncomeTextInputChange: (textSaisi) => {
+    // Je veux dispatcher une action
+    // Qui contiendra le texte saisi
+    // pour que le reducer puisse mettre à jou
+    // le state de l'input
+    dispatch(incomeTextInputChange(textSaisi));
+  },
+  onIncomeAmountInputChange: (textSaisi) => {
     // Je veux dispatcher une action
     // Qui contiendra le texte saisi
     // pour que le reducer puisse mettre à jour
     // le state de l'input
-    dispatch(formInputChange(textSaisi));
+    dispatch(incomeAmountInputChange(textSaisi));
+  },
+  onExpanseTextInputChange: (textSaisi) => {
+    // Je veux dispatcher une action
+    // Qui contiendra le texte saisi
+    // pour que le reducer puisse mettre à jou
+    // le state de l'input
+    dispatch(expanseTextInputChange(textSaisi));
+  },
+  onExpanseAmountInputChange: (textSaisi) => {
+    // Je veux dispatcher une action
+    // Qui contiendra le texte saisi
+    // pour que le reducer puisse mettre à jour
+    // le state de l'input
+    dispatch(expanseAmountInputChange(textSaisi));
+  },
+  onExtraTextInputChange: (textSaisi) => {
+    // Je veux dispatcher une action
+    // Qui contiendra le texte saisi
+    // pour que le reducer puisse mettre à jou
+    // le state de l'input
+    dispatch(extraTextInputChange(textSaisi));
+  },
+  onExtraAmountInputChange: (textSaisi) => {
+    // Je veux dispatcher une action
+    // Qui contiendra le texte saisi
+    // pour que le reducer puisse mettre à jour
+    // le state de l'input
+    dispatch(extraAmountInputChange(textSaisi));
   },
   onFormSubmit: () => {
     console.log('Il y a eu un submit');

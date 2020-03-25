@@ -12,7 +12,12 @@ export const NEW_EXTRA_EXPANSE = '  NEW_EXTRA_EXPANSE,';
 export const NEW_INCOME = '  NEW_INCOME,';
 
 // new Amount line action types
-export const FORM_INPUT_CHANGE = 'FORM_INPUT_CHANGE';
+export const INCOME_TEXT_INPUT_CHANGE = 'INCOME_TEXT_INPUT_CHANGE,';
+export const INCOME_AMOUNT_INPUT_CHANGE = '  INCOME_AMOUNT_INPUT_CHANGE,';
+export const EXPANSE_TEXT_INPUT_CHANGE = '  EXPANSE_TEXT_INPUT_CHANGE,';
+export const EXPANSE_AMOUNT_INPUT_CHANGE = '  EXPANSE_AMOUNT_INPUT_CHANGE,';
+export const EXTRA_TEXT_INPUT_CHANGE = '  EXTRA_TEXT_INPUT_CHANGE,';
+export const EXTRA_AMOUNT_INPUT_CHANGE = '  EXTRA_AMOUNT_INPUT_CHANGE,';
 export const INPUT_SUBMIT = 'INPUT_SUBMIT';
 
 
@@ -55,7 +60,33 @@ export const inputSubmit = () => ({
 
 // New Line Form input change
 
-export const formInputChange = (payload) => ({
-  type: FORM_INPUT_CHANGE,
+export const incomeTextInputChange = (payload) => ({
+  type: INCOME_TEXT_INPUT_CHANGE,
+  payload, // ce qui a été saisi
+});
+
+export const incomeAmountInputChange = (payload) => ({
+  type: INCOME_AMOUNT_INPUT_CHANGE,
+  payload, // ce qui a été saisi
+});
+
+export const expanseTextInputChange = (payload) => ({
+  type: EXPANSE_TEXT_INPUT_CHANGE,
+  payload, // ce qui a été saisi
+});
+
+export const expanseAmountInputChange = (payload) => ({
+  type: EXPANSE_AMOUNT_INPUT_CHANGE,
+  payload, // ce qui a été saisi
+});
+
+
+export const extraTextInputChange = (payload) => ({
+  type: EXTRA_TEXT_INPUT_CHANGE,
+  payload, // ce qui a été saisi
+});
+
+export const extraAmountInputChange = (payload) => ({
+  type: EXTRA_AMOUNT_INPUT_CHANGE,
   payload, // ce qui a été saisi
 });

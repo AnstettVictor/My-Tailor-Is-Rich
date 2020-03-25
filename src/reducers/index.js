@@ -3,12 +3,17 @@ import {
   LOGIN_SUCCESS,
   LOGIN_ERROR,
   TOGGLE_LOGIN,
+  SUBMIT_USER_LOGIN,
   LOGIN_INPUT_CHANGE,
+  INCOME_TEXT_INPUT_CHANGE,
+  INCOME_AMOUNT_INPUT_CHANGE,
+  EXPANSE_TEXT_INPUT_CHANGE,
+  EXPANSE_AMOUNT_INPUT_CHANGE,
+  EXTRA_TEXT_INPUT_CHANGE,
+  EXTRA_AMOUNT_INPUT_CHANGE,
   NEW_FIXED_EXPANSE,
   NEW_EXTRA_EXPANSE,
   NEW_INCOME,
-  SUBMIT_USER_LOGIN,
-  FORM_INPUT_CHANGE,
   TOGGLE_LOADING,
 } from '../actions';
 // Je veux réagir au type d'action "submit"
@@ -20,7 +25,12 @@ const initialState = {
     password: 'Hello123',
   },
   balance: 0,
-  newLineInput: '',
+  incomeTextValue: '',
+  incomeAmountValue: '',
+  expanseTextValue: '',
+  expanseAmountValue: '',
+  extraTextValue: '',
+  extraAmountValue: '',
   incomeList: [],
   fixedExpanseList: [],
   extraExpanseList: [],
@@ -35,18 +45,21 @@ export default (state = initialState, action = {}) => {
         ...state,
         incomeList: [...state.incomeList, action.payload],
         newLineInput: '',
+        newLineAmount: '',
       };
     case NEW_FIXED_EXPANSE:
       return {
         ...state,
         incomeList: [...state.fixedExpanseList, action.payload],
         newLineInput: '',
+        newLineAmount: '',
       };
     case NEW_EXTRA_EXPANSE:
       return {
         ...state,
         incomeList: [...state.extraExpanseList, action.payload],
         newLineInput: '',
+        newLineAmount: '',
       };
     case LOGIN_SUCCESS:
       return {
@@ -87,10 +100,35 @@ export default (state = initialState, action = {}) => {
         ...state,
         isLoginOpened: !state.isLoginOpened,
       };
-    case FORM_INPUT_CHANGE:
+    case INCOME_TEXT_INPUT_CHANGE:
       return {
         ...state,
-        newLineInput: action.payload,
+        incomeTextValue: action.payload,
+      };
+    case INCOME_AMOUNT_INPUT_CHANGE:
+      return {
+        ...state,
+        incomeAmountValue: action.payload,
+      };
+    case EXPANSE_TEXT_INPUT_CHANGE:
+      return {
+        ...state,
+        expanseTextValue: action.payload,
+      };
+    case EXPANSE_AMOUNT_INPUT_CHANGE:
+      return {
+        ...state,
+        expanseAmountValue: action.payload,
+      };
+    case EXTRA_TEXT_INPUT_CHANGE:
+      return {
+        ...state,
+        extraTextValue: action.payload,
+      };
+    case EXTRA_AMOUNT_INPUT_CHANGE:
+      return {
+        ...state,
+        extraAmountValue: action.payload,
       };
     default:
       return state;

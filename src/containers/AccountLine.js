@@ -1,9 +1,7 @@
 import { connect } from 'react-redux';
 import AccountLine from '../components/Columns/AccountLine';
 
-const mapStateToProps = (state) => ({
-  connectedUser: state.user.name,
-});
+const mapStateToProps = null;
 
 const mapDispatchToProps = {};
 

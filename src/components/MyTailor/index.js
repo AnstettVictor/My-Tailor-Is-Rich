@@ -3,7 +3,7 @@ import React from 'react';
 import { Divider, Header, Icon } from 'semantic-ui-react';
 
 // == Import
-import Columns from '../Columns';
+import Columns from '../../containers/Columns';
 import Login from '../Login';
 import Balance from '../Balance';
 

@@ -4,8 +4,7 @@ import Login from '../components/Login';
 import { toggleSettings, settingsInputChange, submitUserLogin } from '../actions';
 
 const mapStateToProps = (state) => ({
-  isOpened: state.isSettingsOpened,
-  formState: state.settingsFormState,
+  user: state.user,
 });
 
 const mapDispatchProps = (dispatch) => ({

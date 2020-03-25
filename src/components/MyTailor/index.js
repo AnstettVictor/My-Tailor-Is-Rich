@@ -4,8 +4,8 @@ import { Divider, Header, Icon } from 'semantic-ui-react';
 
 // == Import
 import Columns from '../../containers/Columns';
-import Login from '../Login';
-import Balance from '../Balance';
+import Login from '../../containers/Login';
+import Balance from '../../containers/Balance';
 
 
 import data from '../../data/data';
@@ -25,8 +25,8 @@ const {
 const App = () => (
   <div className="app">
     <header className="header">
-      <Login user={user} />
-      <Balance balance={balance} />
+      <Login />
+      <Balance />
     </header>
     <Divider horizontal>
       <Header as='h4'>
@@ -34,11 +34,7 @@ const App = () => (
         Etes-vous riche ?
       </Header>
     </Divider>
-    <Columns
-      extraExpanseList={extraExpanseList}
-      fixedExpanseList={fixedExpanseList}
-      incomeList={incomeList}
-    />
+    <Columns />
 
   </div>
 );

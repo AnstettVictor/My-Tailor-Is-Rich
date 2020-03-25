@@ -63,6 +63,8 @@
     "react-redux": "^7.2.0",
     "react-router": "^5.1.2",
     "redux": "*",
-    "semantic-ui-react": "^0.88.2"
+    "semantic-ui-react": "^0.88.2",
+    "uuid": "^7.0.2",
+    "uuidv4": "^6.0.6"
   }
 }

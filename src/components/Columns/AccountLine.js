@@ -14,7 +14,7 @@ const AccountLine = ({ content, amount }) => {
 
 AccountLine.propTypes = {
   content: PropTypes.string.isRequired,
-  amount: PropTypes.number.isRequired,
+  amount: PropTypes.string.isRequired,
 };
 
 export default AccountLine;

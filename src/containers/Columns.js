@@ -9,7 +9,9 @@ import {
   expanseAmountInputChange,
   extraTextInputChange,
   extraAmountInputChange,
-  inputSubmit,
+  incomeSubmit,
+  expanseSubmit,
+  extraSubmit,
 } from '../actions';
 
 
@@ -69,7 +71,7 @@ const mapDispatchToProps = (dispatch) => ({
     // le state de l'input
     dispatch(extraAmountInputChange(textSaisi));
   },
-  onFormSubmit: () => {
+  onIncomeFormSubmit: () => {
     console.log('Il y a eu un submit');
     // Je veux dispatcher une action
     // qui informe mon reducer du submit
@@ -85,11 +87,45 @@ const mapDispatchToProps = (dispatch) => ({
     // Le submit doit aussi vider l'input de saisi
 
     // J'ai besoin de dispatcher l'action que créé l'ction creator
-    dispatch(inputSubmit());
+    dispatch(incomeSubmit());
+  },
+  onExpanseFormSubmit: () => {
+    console.log('Il y a eu un submit');
+    // Je veux dispatcher une action
+    // qui informe mon reducer du submit
+    // mon reducer lors de cette info
+    // va donc chercher à rajouter un message
+    // dans la liste
+
+    // Chaque message est représenté par un objet.
+    // on met ce qu'on veut dans id et dans author,
+    // mais par contre le content devra contenir
+    // ce qui a été saisi par l'user
+
+    // Le submit doit aussi vider l'input de saisi
+
+    // J'ai besoin de dispatcher l'action que créé l'ction creator
+    dispatch(expanseSubmit());
+  },
+  onExtraFormSubmit: () => {
+    console.log('Il y a eu un submit');
+    // Je veux dispatcher une action
+    // qui informe mon reducer du submit
+    // mon reducer lors de cette info
+    // va donc chercher à rajouter un message
+    // dans la liste
+
+    // Chaque message est représenté par un objet.
+    // on met ce qu'on veut dans id et dans author,
+    // mais par contre le content devra contenir
+    // ce qui a été saisi par l'user
+
+    // Le submit doit aussi vider l'input de saisi
+
+    // J'ai besoin de dispatcher l'action que créé l'ction creator
+    dispatch(extraSubmit());
   },
 });
-
-
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Columns);

@@ -1,9 +1,8 @@
-
+import { v4 as uuidv4 } from 'uuid';
 import {
   LOGIN_SUCCESS,
   LOGIN_ERROR,
   TOGGLE_LOGIN,
-  SUBMIT_USER_LOGIN,
   LOGIN_INPUT_CHANGE,
   INCOME_TEXT_INPUT_CHANGE,
   INCOME_AMOUNT_INPUT_CHANGE,
@@ -11,9 +10,9 @@ import {
   EXPANSE_AMOUNT_INPUT_CHANGE,
   EXTRA_TEXT_INPUT_CHANGE,
   EXTRA_AMOUNT_INPUT_CHANGE,
-  NEW_FIXED_EXPANSE,
-  NEW_EXTRA_EXPANSE,
-  NEW_INCOME,
+  EXTRA_SUBMIT,
+  EXPANSE_SUBMIT,
+  INCOME_SUBMIT,
   TOGGLE_LOADING,
 } from '../actions';
 // Je veux réagir au type d'action "submit"
@@ -40,26 +39,38 @@ const initialState = {
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case NEW_INCOME:
+    case INCOME_SUBMIT:
       return {
         ...state,
-        incomeList: [...state.incomeList, action.payload],
-        newLineInput: '',
-        newLineAmount: '',
+        incomeList: [...state.incomeList, {
+          id: uuidv4(),
+          content: state.incomeTextValue,
+          amount: state.incomeAmountValue,
+        }],
+        incomeTextValue: '',
+        incomeAmountValue: '',
       };
-    case NEW_FIXED_EXPANSE:
+    case EXPANSE_SUBMIT:
       return {
         ...state,
-        incomeList: [...state.fixedExpanseList, action.payload],
-        newLineInput: '',
-        newLineAmount: '',
+        fixedExpanseList: [...state.fixedExpanseList, {
+          id: uuidv4(),
+          content: state.expanseTextValue,
+          amount: state.expanseAmountValue,
+        }],
+        expanseTextValue: '',
+        expanseAmountValue: '',
       };
-    case NEW_EXTRA_EXPANSE:
+    case EXTRA_SUBMIT:
       return {
         ...state,
-        incomeList: [...state.extraExpanseList, action.payload],
-        newLineInput: '',
-        newLineAmount: '',
+        extraExpanseList: [...state.extraExpanseList, {
+          id: uuidv4(),
+          content: state.extraTextValue,
+          amount: state.extraAmountValue,
+        }],
+        extraTextValue: '',
+        extraAmountValue: '',
       };
     case LOGIN_SUCCESS:
       return {

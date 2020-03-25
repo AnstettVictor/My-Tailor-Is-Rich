@@ -21,7 +21,10 @@ const Columns = ({
   expanseAmountValue,
   extraTextValue,
   extraAmountValue,
-  onFormSubmit,
+  onIncomeFormSubmit,
+  onExpanseFormSubmit,
+  onExtraFormSubmit,
+
 }) => {
   return (
     <Grid columns='equal'>
@@ -35,12 +38,11 @@ const Columns = ({
                   <AccountLine key={id} content={content} amount={amount} className="line" />
                 ))
               }
-              <div>
-                <Button loading primary>
-                  Loading
-                </Button>
-              </div>
-              <Form>
+              <Form onSubmit={(evt) => {
+                evt.preventDefault();
+                onIncomeFormSubmit();
+              }}
+              >
                 <Form.Field>
                   <input
                     value={incomeTextValue}
@@ -75,14 +77,9 @@ const Columns = ({
                   <AccountLine key={id} content={content} amount={amount} className="line" />
                 ))
               }
-              <div>
-                <Button loading primary>
-                  Loading
-                </Button>
-              </div>
-              <Form onSubmit={(evt) => {<input type="text" placeholder="Nom de la dépense" />
+              <Form onSubmit={(evt) => {
                 evt.preventDefault();
-                onFormSubmit();
+                onExpanseFormSubmit();
               }}
               >
                 <Form.Field>
@@ -119,12 +116,11 @@ const Columns = ({
                   <AccountLine key={id} content={content} amount={amount} className="line" />
                 ))
                 }
-              <div>
-                <Button icon primary>
-                  <Icon name='add circle' />
-                </Button>
-              </div>
-              <Form>
+              <Form onSubmit={(evt) => {
+                evt.preventDefault();
+                onExtraFormSubmit();
+              }}
+              >
                 <Form.Field>
                   <input
                     value={extraTextValue}
@@ -144,7 +140,7 @@ const Columns = ({
                     }}
                     placeholder="Montant"
                   />
-                  </Form.Field>
+                </Form.Field>
                 <Button className="inputButton" type="submit">Ajouter</Button>
               </Form>
             </Segment.Group>
@@ -160,23 +156,23 @@ const Columns = ({
 Columns.propTypes = {
   incomeList: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
-      amount: PropTypes.number.isRequired,
+      amount: PropTypes.string.isRequired,
     }),
   ).isRequired,
   fixedExpanseList: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
-      amount: PropTypes.number.isRequired,
+      amount: PropTypes.string.isRequired,
     }),
   ).isRequired,
   extraExpanseList: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       content: PropTypes.string.isRequired,
-      amount: PropTypes.number.isRequired,
+      amount: PropTypes.string.isRequired,
     }),
   ).isRequired,
   onIncomeTextInputChange: PropTypes.func.isRequired,
@@ -185,7 +181,9 @@ Columns.propTypes = {
   onExpanseAmountInputChange: PropTypes.func.isRequired,
   onExtraTextInputChange: PropTypes.func.isRequired,
   onExtraAmountInputChange: PropTypes.func.isRequired,
-  onFormSubmit: PropTypes.func.isRequired,
+  onIncomeFormSubmit: PropTypes.func.isRequired,
+  onExpanseFormSubmit: PropTypes.func.isRequired,
+  onExtraFormSubmit: PropTypes.func.isRequired,
   incomeTextValue: PropTypes.string.isRequired,
   incomeAmountValue: PropTypes.string.isRequired,
   expanseTextValue: PropTypes.string.isRequired,

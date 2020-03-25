@@ -27,7 +27,7 @@ const Login = ({ user }) => (
   </Menu>
 );
 
-Login.protTypes = {
+Login.propTypes = {
   user: PropTypes.shape({
     name: PropTypes.string.isRequired,
     avatar: PropTypes.string.isRequired,

@@ -18,7 +18,9 @@ export const EXPANSE_TEXT_INPUT_CHANGE = '  EXPANSE_TEXT_INPUT_CHANGE,';
 export const EXPANSE_AMOUNT_INPUT_CHANGE = '  EXPANSE_AMOUNT_INPUT_CHANGE,';
 export const EXTRA_TEXT_INPUT_CHANGE = '  EXTRA_TEXT_INPUT_CHANGE,';
 export const EXTRA_AMOUNT_INPUT_CHANGE = '  EXTRA_AMOUNT_INPUT_CHANGE,';
-export const INPUT_SUBMIT = 'INPUT_SUBMIT';
+export const INCOME_SUBMIT = 'INCOME_SUBMIT';
+export const EXPANSE_SUBMIT = 'EXPANSE_SUBMIT';
+export const EXTRA_SUBMIT = 'EXTRA_SUBMIT';
 
 
 // App Loading action types
@@ -54,9 +56,6 @@ export const toggleLoading = () => ({
   type: TOGGLE_LOADING,
 });
 
-export const inputSubmit = () => ({
-  type: INPUT_SUBMIT,
-});
 
 // New Line Form input change
 
@@ -89,4 +88,19 @@ export const extraTextInputChange = (payload) => ({
 export const extraAmountInputChange = (payload) => ({
   type: EXTRA_AMOUNT_INPUT_CHANGE,
   payload, // ce qui a été saisi
+});
+
+
+// Form Submit Action Creators
+
+export const incomeSubmit = () => ({
+  type: INCOME_SUBMIT,
+});
+
+export const expanseSubmit = () => ({
+  type: EXPANSE_SUBMIT,
+});
+
+export const extraSubmit = () => ({
+  type: EXTRA_SUBMIT,
 });

@@ -39,6 +39,7 @@ class UserEditType extends AbstractType
                 ])
             ->add('avatar',FileType::class,[
                 'mapped' =>false,
+                'required' =>false,
            ])
         ;
     }

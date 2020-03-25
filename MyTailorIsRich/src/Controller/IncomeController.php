@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Income;
 use App\Form\IncomeType;
 use App\Repository\IncomeRepository;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -88,6 +89,9 @@ class IncomeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $income->setUpdatedAt(new DateTime());
+            
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('income_index');

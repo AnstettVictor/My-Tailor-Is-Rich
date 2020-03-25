@@ -2,16 +2,17 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Form\UserEditType;
+use App\Service\FileUploader;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use App\Service\FileUploader;
 
 
 
@@ -92,7 +93,7 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             
-       
+            $user->setUpdatedAt(new DateTime());
             $user->setPassword($encoder->encodePassword($user, $user->getPassword()));
            
             $imageFile = $form['avatar']->getData();

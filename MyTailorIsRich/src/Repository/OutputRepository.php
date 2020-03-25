@@ -23,11 +23,13 @@ class OutputRepository extends ServiceEntityRepository
       * @return int Somme de toutes les colonnes amount 
       */
     
-      public function total()
+      public function totalByUser($id)
       {
           return $this->createQueryBuilder('o')
               ->select('SUM(o.amount)')
               ->addSelect('count(o.amount)')
+              ->where('o.user = :id')
+              ->setParameter('id', $id)
               ->getQuery()
               ->getSingleResult()
           ;

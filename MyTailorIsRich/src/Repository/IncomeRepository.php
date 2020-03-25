@@ -23,11 +23,13 @@ class IncomeRepository extends ServiceEntityRepository
       * @return int Somme de toutes les colonnes amount 
       */
     
-      public function total()
+      public function totalByUser($id)
       {
           return $this->createQueryBuilder('i')
               ->select('SUM(i.amount)')
               ->addSelect('count(i.amount)')
+              ->where('i.user = :id')
+              ->setParameter('id', $id)
               ->getQuery()
               ->getSingleResult()
           ;

@@ -1,33 +1,52 @@
-import { v4 as uuidv4 } from 'uuid';
+
 import {
-  MESSAGE_INPUT_CHANGE,
-  TOGGLE_SETTINGS,
-  TOGGLE_LOADING,
-  SETTINGS_INPUT_CHANGE,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
-  NEW_MESSAGE_RECEIVED,
+  TOGGLE_LOGIN,
+  LOGIN_INPUT_CHANGE,
+  NEW_FIXED_EXPANSE,
+  NEW_EXTRA_EXPANSE,
+  NEW_INCOME,
+  SUBMIT_USER_LOGIN,
+  FORM_INPUT_CHANGE,
+  TOGGLE_LOADING,
 } from '../actions';
 // Je veux réagir au type d'action "submit"
 
 const initialState = {
-  messages: [],
-  messageInput: '',
   user: {
-    name: 'anonyme',
+    name: 'Compote23',
+    avatar: 'https://react.semantic-ui.com/images/avatar/small/zoe.jpg',
+    password: 'Hello123',
   },
-  isSettingsOpened: true,
-  settingsFormState: { email: 'test@machin.com', password: 't' },
+  balance: 0,
+  newLineInput: '',
+  incomeList: [],
+  fixedExpanseList: [],
+  extraExpanseList: [],
+  isLoginOpened: true,
   appLoading: false,
 };
 
 export default (state = initialState, action = {}) => {
   switch (action.type) {
-    case NEW_MESSAGE_RECEIVED:
+    case NEW_INCOME:
       return {
         ...state,
-        messages: [...state.messages, action.payload],
-        messageInput: '',
+        incomeList: [...state.incomeList, action.payload],
+        newLineInput: '',
+      };
+    case NEW_FIXED_EXPANSE:
+      return {
+        ...state,
+        incomeList: [...state.fixedExpanseList, action.payload],
+        newLineInput: '',
+      };
+    case NEW_EXTRA_EXPANSE:
+      return {
+        ...state,
+        incomeList: [...state.extraExpanseList, action.payload],
+        newLineInput: '',
       };
     case LOGIN_SUCCESS:
       return {
@@ -44,14 +63,15 @@ export default (state = initialState, action = {}) => {
         appLoading: false,
         user: {
           name: 'anonyme',
+          avatar: 'https://icon-library.net/images/anonymous-icon/anonymous-icon-10.jpg',
         },
       };
-    case SETTINGS_INPUT_CHANGE:
+    case LOGIN_INPUT_CHANGE:
 
       return {
         ...state,
-        settingsFormState: {
-          ...state.settingsFormState, // email et password que je met dans l'objet
+        user: {
+          ...state.user, // email et password que je met dans l'objet
           ...action.payload, // J'écrase soit email soit password avec ce que j'ai dans le payload
         },
       };
@@ -59,18 +79,18 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         appLoading: !state.appLoading,
-        isSettingsOpened: false,
+        isLoginOpened: false,
 
       };
-    case TOGGLE_SETTINGS:
+    case TOGGLE_LOGIN:
       return {
         ...state,
-        isSettingsOpened: !state.isSettingsOpened,
+        isLoginOpened: !state.isLoginOpened,
       };
-    case MESSAGE_INPUT_CHANGE:
+    case FORM_INPUT_CHANGE:
       return {
         ...state,
-        messageInput: action.payload,
+        newLineInput: action.payload,
       };
     default:
       return state;

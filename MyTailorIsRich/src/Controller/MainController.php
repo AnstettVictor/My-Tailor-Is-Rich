@@ -23,14 +23,20 @@ class MainController extends AbstractController
      */
     public function income(IncomeRepository $incomeRepository)
     {
-        return $this->json($incomeRepository->total());
+        $user = $this->getUser();
+
+        $userId = $user->getId();
+        return $this->json($incomeRepository->totalByUser($userId));
     }
         /**
      * @Route("/total/output", name="total_output")
      */
     public function output(OutputRepository $outputRepository)
     {
-        return $this->json($outputRepository->total());
+        $user = $this->getUser();
+
+        $userId = $user->getId();
+        return $this->json($outputRepository->totalByUser($userId));
     }
     
     /**
@@ -38,8 +44,12 @@ class MainController extends AbstractController
      */
     public function solde(OutputRepository $outputRepository, IncomeRepository $incomeRepository)
     {
-       $income = $incomeRepository->total();
-       $output = $outputRepository->total();
+        $user = $this->getUser();
+
+        $userId = $user->getId();
+        
+       $income = $incomeRepository->totalByUser($userId);
+       $output = $outputRepository->totalByUser($userId);
 
        $solde = [   
            'Solde Income' => $income[1],

@@ -2,13 +2,14 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\Output;
 use App\Form\OutputType;
 use App\Repository\OutputRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/output")
@@ -20,8 +21,12 @@ class OutputController extends AbstractController
      */
     public function index(OutputRepository $outputRepository): Response
     {
+        $user = $this->getUser();
+
+        $userId = $user->getId();
+
         return $this->render('output/index.html.twig' , [
-            'outputs' => $outputRepository->findAll(),
+            'outputs' => $outputRepository->findBy(['user' => $userId]),
         ]);
     }
     /**
@@ -43,6 +48,13 @@ class OutputController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $output = $form->getData();
+
+             // On associe le user connecté à l'Ouput
+             $output->setUser($this->getUser());
+
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($output);
             $entityManager->flush();
@@ -67,7 +79,11 @@ class OutputController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
+            $output->setUpdatedAt(new DateTime());
             $this->getDoctrine()->getManager()->flush();
+
 
             return $this->redirectToRoute('output_index');
         }

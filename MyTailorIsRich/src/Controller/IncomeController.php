@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Income;
 use App\Form\IncomeType;
 use App\Repository\IncomeRepository;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,9 +20,13 @@ class IncomeController extends AbstractController
      * @Route("/", name="income_index", methods={"GET"})
      */
     public function index(IncomeRepository $incomeRepository): Response
-    {
+    {   
+        $user = $this->getUser();
+
+        $userId = $user->getId();
+       
         return $this->render('income/index.html.twig', [
-            'incomes' => $incomeRepository->findAll(),
+            'incomes' => $incomeRepository->findBy(['user' => $userId]),
         ]);
     }
     /**
@@ -35,50 +40,68 @@ class IncomeController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="income_new", methods={"GET"})
+     * @Route("/new", name="income_new", methods={"GET", "POST"})
      */
     public function new(Request $request): Response
     {
         $income = new Income();
-        $form = $this->createForm(IncomeType::class, $income, [
-            'action' => $this->generateUrl('income_new_post'),
-            'method' => 'POST',
-        ]);
+        // $form = $this->createForm(IncomeType::class, $income, [
+        //     'action' => $this->generateUrl('income_new_post'),
+        //     'method' => 'POST',
+        // ]);
+
+        $form = $this->createForm(IncomeType::class, $income);
         $form->handleRequest($request);
 
 
-        // if ($form->isSubmitted() && $form->isValid()) {
-        //     $entityManager = $this->getDoctrine()->getManager();
-        //     $entityManager->persist($income);
-        //     $entityManager->flush();
+        if ($form->isSubmitted() && $form->isValid()) {
 
-        //     return $this->redirectToRoute('income_index');
-        // }
 
+            $income = $form->getData();
+
+            // On associe le user connecté à l'Ouput
+            $income->setUser($this->getUser());
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($income);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('income_index');
+        }
+
+    
         return $this->render('income/new.html.twig', [
             'income' => $income,
             'form' => $form->createView(),
         ]);
     }
-       /**
-     * @Route("/new", name="income_new_post", methods={"POST"})
-     */
-    public function newPost(Request $request)
-    {
-        $income = new Income();
+
+
+    //    /**
+    //  * @Route("/new", name="income_new_post", methods={"POST"})
+    //  */
+    // public function newPost(Request $request)
+    // {
+    //     $income = new Income();
         
-        $data = $request->request->get('income');
-        dd($data);
-        $income->setName($data['name']);
-        $income->setAmount($data['amount']);
-        $em = $this->getDoctrine()->getManager();
+    //     $data = $request->request->get('income');
+    //     dd($data);
+    //     $income->setName($data['name']);
+    //     $income->setAmount($data['amount']);
+    //     $em = $this->getDoctrine()->getManager();
 
      
-        $em->persist($income);
-        $em->flush();
-        return $this->redirectToRoute('main');
+    //     $em->persist($income);
+    //     $em->flush();
+    //     return $this->redirectToRoute('main');
       
-    }
+
+    // }
+
+
+
+
+
     /**
      * @Route("/{id}/edit", name="income_edit", methods={"GET","POST"})
      */
@@ -88,6 +111,9 @@ class IncomeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $income->setUpdatedAt(new DateTime());
+            
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('income_index');

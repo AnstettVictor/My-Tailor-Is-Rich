@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Output;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,6 +26,12 @@ class OutputType extends AbstractType
                 'constraints' =>[
                     new NotBlank(),
                     new PositiveOrZero(),
+                ]
+            ])
+            ->add('status', ChoiceType::class, [
+                'choices' => [
+                    'Mensuel' => false,
+                    'Exceptionnel' => true,
                 ]
             ])
         ;

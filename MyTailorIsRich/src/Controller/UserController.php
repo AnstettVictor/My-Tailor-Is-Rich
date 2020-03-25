@@ -48,33 +48,33 @@ class UserController extends AbstractController
     }
 
     
-    /**
-     * @Route("/new", name="user_new", methods={"GET","POST"})
-     */
-    public function new(Request $request, UserPasswordEncoderInterface $encoder)
-    {
-        $user = new User();
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
+    // /**
+    //  * @Route("/new", name="user_new", methods={"GET","POST"})
+    //  */
+    // public function new(Request $request, UserPasswordEncoderInterface $encoder)
+    // {
+    //     $user = new User();
+    //     $form = $this->createForm(UserType::class, $user);
+    //     $form->handleRequest($request);
         
-        if ($form->isSubmitted() && $form->isValid()) {
+    //     if ($form->isSubmitted() && $form->isValid()) {
             
             
-            $user->setPassword($encoder->encodePassword($user, $user->getPassword()));
+    //         $user->setPassword($encoder->encodePassword($user, $user->getPassword()));
         
             
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-            $entityManager->flush();
+    //         $entityManager = $this->getDoctrine()->getManager();
+    //         $entityManager->persist($user);
+    //         $entityManager->flush();
 
-            // return $this->redirectToRoute('user_index');
-        }
+    //         return $this->redirectToRoute('app_register');
+    //     }
 
-        return $this->render('user/new.html.twig', [
-            'user' => $user,
-            'form' => $form->createView(),
-        ]);
-    }
+    //     return $this->render('user/new.html.twig', [
+    //         'user' => $user,
+    //         'form' => $form->createView(),
+    //     ]);
+    // }
 
 
 

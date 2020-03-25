@@ -36,7 +36,7 @@ class IncomeController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="income_new", methods={"GET"})
+     * @Route("/new", name="income_new", methods={"GET", "POST"})
      */
     public function new(Request $request): Response
     {
@@ -51,6 +51,13 @@ class IncomeController extends AbstractController
 
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
+            $income = $form->getData();
+
+            // On associe le user connecté à l'Ouput
+            $income->setUser($this->getUser());
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($income);
             $entityManager->flush();
@@ -58,30 +65,39 @@ class IncomeController extends AbstractController
             return $this->redirectToRoute('income_index');
         }
 
+    
         return $this->render('income/new.html.twig', [
             'income' => $income,
             'form' => $form->createView(),
         ]);
     }
-       /**
-     * @Route("/new", name="income_new_post", methods={"POST"})
-     */
-    public function newPost(Request $request)
-    {
-        $income = new Income();
+
+
+    //    /**
+    //  * @Route("/new", name="income_new_post", methods={"POST"})
+    //  */
+    // public function newPost(Request $request)
+    // {
+    //     $income = new Income();
         
-        $data = $request->request->get('income');
-        dd($data);
-        $income->setName($data['name']);
-        $income->setAmount($data['amount']);
-        $em = $this->getDoctrine()->getManager();
+    //     $data = $request->request->get('income');
+    //     dd($data);
+    //     $income->setName($data['name']);
+    //     $income->setAmount($data['amount']);
+    //     $em = $this->getDoctrine()->getManager();
 
      
-        $em->persist($income);
-        $em->flush();
-        return $this->redirectToRoute('main');
+    //     $em->persist($income);
+    //     $em->flush();
+    //     return $this->redirectToRoute('main');
       
-    }
+
+    // }
+
+
+
+
+
     /**
      * @Route("/{id}/edit", name="income_edit", methods={"GET","POST"})
      */

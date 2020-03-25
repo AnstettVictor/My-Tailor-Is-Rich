@@ -34,6 +34,7 @@ const initialState = {
   fixedExpanseList: [],
   extraExpanseList: [],
   isLoginOpened: true,
+  isUserLoggedIn: true,
   appLoading: false,
 };
 
@@ -80,6 +81,7 @@ export default (state = initialState, action = {}) => {
           name: action.payload,
         },
         appLoading: false,
+        isUserLoggedIn: true,
       };
     case LOGIN_ERROR:
       return {
@@ -89,6 +91,7 @@ export default (state = initialState, action = {}) => {
           name: 'anonyme',
           avatar: 'https://icon-library.net/images/anonymous-icon/anonymous-icon-10.jpg',
         },
+        isUserLoggedIn: false,
       };
     case LOGIN_INPUT_CHANGE:
 

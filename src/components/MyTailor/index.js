@@ -8,17 +8,7 @@ import Login from '../../containers/Login';
 import Balance from '../../containers/Balance';
 
 
-import data from '../../data/data';
 import './style.scss';
-
-
-const {
-  extraExpanseList,
-  fixedExpanseList,
-  incomeList,
-  balance,
-  user,
-} = data;
 
 
 // == Composant

@@ -4,7 +4,7 @@ import { Button, Menu, Label } from 'semantic-ui-react';
 
 import './style.scss';
 
-const Login = ({ user }) => (
+const Login = ({ user, isUserLoggedIn }) => (
   <Menu mobile={16} tablet={8} computer={4} compact>
     <Menu.Item>
       <img src="https://images.onlinelabels.com/images/clip-art/Bonzo/Top%20hat,%20moustache,%20monocle-205784.png" alt="MyTailor Logo" />
@@ -33,6 +33,7 @@ Login.propTypes = {
     avatar: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
   }).isRequired,
+  isUserLoggedIn: PropTypes.bool
 };
 
 export default Login;

@@ -1,17 +1,18 @@
 import { connect } from 'react-redux';
 import Login from '../components/Login';
 
-import { toggleSettings, settingsInputChange, submitUserLogin } from '../actions';
+import { isUserLoggedIn, settingsInputChange, submitUserLogin } from '../actions';
 
 const mapStateToProps = (state) => ({
   user: state.user,
+  isUserLoggedIn: state.isUserLoggedIn,
 });
 
 const mapDispatchProps = (dispatch) => ({
   toggleOpened: () => {
     console.log('Toggle');
     // Je dois changer le "isOpened" du state
-    dispatch(toggleSettings());
+    dispatch(isUserLoggedIn());
   },
   onFormSubmit: () => {
     console.log('Submit');

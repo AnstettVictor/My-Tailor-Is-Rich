@@ -26,6 +26,7 @@ const mapStateToProps = (state) => ({
   incomeList: state.incomeList,
   fixedExpanseList: state.fixedExpanseList,
   extraExpanseList: state.extraExpanseList,
+  isUserLoggedIn: state.isUserLoggedIn,
 });
 
 const mapDispatchToProps = (dispatch) => ({

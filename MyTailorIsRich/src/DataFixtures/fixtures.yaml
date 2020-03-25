@@ -8,12 +8,14 @@ App\Entity\Income:
     income_{1..20}:
         name: '<word()>'
         amount: '<numberBetween(0, 2500)>'
+        status: '<numberBetween(0, 1)>'
         user: '@user_*'
 
 App\Entity\Output:
     output_{1..20}:
         name: '<word()>'
         amount: '<numberBetween(0, 2500)>'
+        status: '<numberBetween(0, 1)>'
         user: '@user_*'
 
 

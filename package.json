@@ -56,10 +56,12 @@
     "webpack-merge": "*"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "prop-types": "*",
     "react": "*",
     "react-dom": "*",
-    "react-redux": "*",
+    "react-redux": "^7.2.0",
+    "react-router": "^5.1.2",
     "redux": "*",
     "semantic-ui-react": "^0.88.2"
   }

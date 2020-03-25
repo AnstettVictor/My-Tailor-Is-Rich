@@ -44,6 +44,13 @@ class OutputController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $output = $form->getData();
+
+             // On associe le user connecté à l'Ouput
+             $output->setUser($this->getUser());
+
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($output);
             $entityManager->flush();

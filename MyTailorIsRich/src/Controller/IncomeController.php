@@ -41,20 +41,22 @@ class IncomeController extends AbstractController
     public function new(Request $request): Response
     {
         $income = new Income();
-        $form = $this->createForm(IncomeType::class, $income, [
-            'action' => $this->generateUrl('income_new_post'),
-            'method' => 'POST',
-        ]);
+        // $form = $this->createForm(IncomeType::class, $income, [
+        //     'action' => $this->generateUrl('income_new_post'),
+        //     'method' => 'POST',
+        // ]);
+
+        $form = $this->createForm(IncomeType::class, $income);
         $form->handleRequest($request);
 
 
-        // if ($form->isSubmitted() && $form->isValid()) {
-        //     $entityManager = $this->getDoctrine()->getManager();
-        //     $entityManager->persist($income);
-        //     $entityManager->flush();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($income);
+            $entityManager->flush();
 
-        //     return $this->redirectToRoute('income_index');
-        // }
+            return $this->redirectToRoute('income_index');
+        }
 
         return $this->render('income/new.html.twig', [
             'income' => $income,

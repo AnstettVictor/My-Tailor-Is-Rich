@@ -53,6 +53,9 @@ class Income
 
     }
 
+    
+
+
     public function getId(): ?int
     {
         return $this->id;

@@ -21,8 +21,12 @@ class OutputController extends AbstractController
      */
     public function index(OutputRepository $outputRepository): Response
     {
+        $user = $this->getUser();
+
+        $userId = $user->getId();
+
         return $this->render('output/index.html.twig' , [
-            'outputs' => $outputRepository->findAll(),
+            'outputs' => $outputRepository->findBy(['user' => $userId]),
         ]);
     }
     /**

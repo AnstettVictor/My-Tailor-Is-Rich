@@ -20,9 +20,13 @@ class IncomeController extends AbstractController
      * @Route("/", name="income_index", methods={"GET"})
      */
     public function index(IncomeRepository $incomeRepository): Response
-    {
+    {   
+        $user = $this->getUser();
+
+        $userId = $user->getId();
+       
         return $this->render('income/index.html.twig', [
-            'incomes' => $incomeRepository->findAll(),
+            'incomes' => $incomeRepository->findBy(['user' => $userId]),
         ]);
     }
     /**

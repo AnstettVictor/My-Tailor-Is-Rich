@@ -10,6 +10,8 @@ const Login = ({ user, isUserLoggedIn }) => (
       <img src="https://images.onlinelabels.com/images/clip-art/Bonzo/Top%20hat,%20moustache,%20monocle-205784.png" alt="MyTailor Logo" />
     </Menu.Item>
 
+
+    {/*TODO: Add a condition here to display Sign-up and Log-in only if 'isUserLoggedIn = false' */}
     <Menu.Item>
       <Button primary>Sign up</Button>
     </Menu.Item>
@@ -17,6 +19,7 @@ const Login = ({ user, isUserLoggedIn }) => (
     <Menu.Item>
       <Button>Log-in</Button>
     </Menu.Item>
+
 
     <Menu.Item>
       <Label as='a' image>

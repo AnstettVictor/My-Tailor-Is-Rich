@@ -1,7 +1,10 @@
 import { connect } from 'react-redux';
 import Login from '../components/Login';
 
-import { isUserLoggedIn, settingsInputChange, submitUserLogin } from '../actions';
+import { isUserLoggedIn, loginInputChange, submitUserLogin } from '../actions';
+
+
+// TODO: Create actions for the Log-in form
 
 const mapStateToProps = (state) => ({
   user: state.user,
@@ -23,7 +26,7 @@ const mapDispatchProps = (dispatch) => ({
     console.log('Change', changement);
     // Je veux changer dans mon state la valeur
     // de l'input qui a changé
-    dispatch(settingsInputChange(changement));
+    dispatch(loginInputChange(changement));
   },
 });
 

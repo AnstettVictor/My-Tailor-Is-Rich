@@ -4,6 +4,7 @@ import { Label } from 'semantic-ui-react';
 
 import './style.scss';
 
+// account balance plugin with condition to display red or green depending on balance amount
 const Balance = ({ balance }) => (
   <Label
     mobile={16}

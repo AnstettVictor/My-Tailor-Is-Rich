@@ -11,7 +11,7 @@ export const NEW_FIXED_EXPANSE = 'NEW_FIXED_EXPANSE,';
 export const NEW_EXTRA_EXPANSE = '  NEW_EXTRA_EXPANSE,';
 export const NEW_INCOME = '  NEW_INCOME,';
 
-// new Amount line action types
+// new Amount line action types | To be improved with useRef for multi-form inputs maybe...
 export const INCOME_TEXT_INPUT_CHANGE = 'INCOME_TEXT_INPUT_CHANGE,';
 export const INCOME_AMOUNT_INPUT_CHANGE = '  INCOME_AMOUNT_INPUT_CHANGE,';
 export const EXPANSE_TEXT_INPUT_CHANGE = '  EXPANSE_TEXT_INPUT_CHANGE,';
@@ -57,7 +57,7 @@ export const toggleLoading = () => ({
 });
 
 
-// New Line Form input change
+// New Line Form input changes
 
 export const incomeTextInputChange = (payload) => ({
   type: INCOME_TEXT_INPUT_CHANGE,
@@ -104,3 +104,6 @@ export const expanseSubmit = () => ({
 export const extraSubmit = () => ({
   type: EXTRA_SUBMIT,
 });
+
+
+// TODO: Action Creators and Types for Login and Sign up forms

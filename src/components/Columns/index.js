@@ -32,6 +32,9 @@ const Columns = ({
   isUserLoggedIn,
 
 }) => {
+
+  {/* Condition to display the Colums with Incomes and Expenses if user connected or not */}
+
   return (isUserLoggedIn === false ? 'Veuillez vous connecter pour le savoir...'
     : (
       <Grid columns='equal'>

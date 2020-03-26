@@ -4,6 +4,8 @@ import {
   SUBMIT_USER_LOGIN, toggleLoading, loginSuccess, loginError,
 } from '../actions';
 
+// TODO: create all maps to the Symphony API
+
 export default (store) => (next) => (action) => {
   // Par défaut je vais chercher à laisser passer toutes les
   // actions, pour ne bloquer éventuellement que celles qui me

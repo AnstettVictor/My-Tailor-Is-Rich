@@ -15,7 +15,7 @@ import {
   INCOME_SUBMIT,
   TOGGLE_LOADING,
 } from '../actions';
-// Je veux réagir au type d'action "submit"
+
 
 const initialState = {
   user: {
@@ -98,8 +98,8 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         user: {
-          ...state.user, // email et password que je met dans l'objet
-          ...action.payload, // J'écrase soit email soit password avec ce que j'ai dans le payload
+          ...state.user,
+          ...action.payload,
         },
       };
     case TOGGLE_LOADING:

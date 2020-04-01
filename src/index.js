@@ -12,13 +12,13 @@ import store from 'src/store';
 
 
 // == Render
-// 1. Le composant racine (celui qui contient l'ensemble de l'app)
+// 1. Le composant racine
 const rootComponent = (
   <Provider store={store}>
     <MyTailor />
   </Provider>
 );
-// 2. La cible du DOM (là où la structure doit prendre vie dans le DOM)
+// 2. La cible du DOM
 const target = document.getElementById('root');
-// Le rendu de React => DOM
+// Le rendu de React
 render(rootComponent, target);
